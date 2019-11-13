@@ -5,6 +5,7 @@
   <main>
     <?php
       if (isset($_SESSION['accountName'])) {
+        require "acctHome.php";
         echo '<p>You are logged in.</p>';
       } else {
         checkLoginErrors();
