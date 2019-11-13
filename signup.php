@@ -27,6 +27,22 @@
                                 <button type="submit" class="btn btn-primary" name="signup">Submit</button>
                             </form>
                         </div>
+                        <?php
+                            if (isset($_GET['error'])) {
+                               if ($_GET['error'] == "emptyfields") {
+                                   echo '<p class="signup-error">Please fill in the blanks.</p>';
+                               } else if ($_GET['error'] == "passwordConfirmation") {
+                                   echo '<p class="signup-error">Your passwords do not match.</p>';
+                               } else if ($_GET['error'] == "accountAlreadyExists") {
+                                   echo '<p class="signup-error">This account already exists.</p>';
+                               }
+                            } else if (isset($_GET['signup'])) {
+                                if ($_GET['signup'] == "success") {
+                                    echo '<p class="signup-success">You have successfully signed up! You can now login.</p>';
+                                }
+                            }
+                        
+                        ?>
                     </div>
                 </div>
             </div>

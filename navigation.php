@@ -29,7 +29,7 @@
      <!------------- Navbar Setup ---------------------->
     <nav class="navbar navbar-light bg-light">
         
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
             <img class="navbar-logo" src="images/famlog_logo.png" alt="logo">
         </a> 
 
