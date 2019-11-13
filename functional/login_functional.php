@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
             } else if ($pwdCheck == true) {
                 session_start();
                 $_SESSION['accountName'] = $tmpAcctName;
-                header("Location: ../index.php?login=Success");
+                header("Location: ../accountHome.php");
                 exit();
             } else {
                 header("Location: ../index.php?error=wrongPass");

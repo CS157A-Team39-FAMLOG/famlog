@@ -4,7 +4,7 @@
 
 <style>
 <?php
-    include 'css/navbarStyle.css';
+    include 'css/navigationStyle.css';
     include 'css/signupStyle.css';
 ?>
 </style>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      
     <!-- Navbar Styling -->
-    <link rel="stylesheet" type="text/css" href="css/navbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/navigationStyle.css">
 
     <!-- Styling for signup.php-->
     <link rel="stylesheet" href="css/signupStyle.css">
@@ -36,11 +36,17 @@
         <?php
         
         if (isset($_SESSION['accountName'])) {
-            echo '<form class="form-inline my-2 my-lg-0 navbar-form-pos" action="functional/logout_functional.php" method="post">
-                    <button  class="btn btn-secondary" type="submit" name="logout">Logout</button>
-                  </form>';
+            echo '
+                  <div class="form-inline">
+                    <button class="btn btn-success signup-btn" type="button" name="signup"><a class="signup-link" href="signup.php">Signup</a></button>                    
+                    <button class="btn btn-success signup-btn" type="button" name="signup"><a class="signup-link" href="signup.php">Signup</a></button>
+                    <form class="form-group my-2 my-lg-0 navbar-form-pos" action="functional/logout_functional.php" method="post">
+                        <button  class="btn btn-secondary" type="submit" name="logout">Logout</button>
+                    </form>
+                  </div>
+                  ';
           } else {
-            echo '<form class="form-inline my-2 my-lg-0 navbar-form-pos" action="functional/login_functional.php" method="post">
+            echo '<form class="form-inline my-2 my-lg-0" action="functional/login_functional.php" method="post">
                     <input class="form-control mr-sm-2" type="text" name="loginAcctName" placeholder="Account Name">
                     <input class="form-control mr-sm-2" type="password" name="loginPwd" placeholder="Password">
                     <button class="btn btn-primary" type="submit" name="login">Login</button> 

@@ -49,3 +49,11 @@
   color: white !important;
   text-decoration: none !important;
 }
+
+.main {
+  background-color: #006688;
+}
+
+.navbar-form-pos {
+  margin-right: 10px;
+}
