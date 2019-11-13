@@ -1,5 +1,5 @@
-<?php    
-    if (isset($_SESSION)) {
+<?php   
+    if (session_status()) {
         require 'navigation.php';
         echo 'Welcome, '.$_SESSION['accountName'];
     } else {
