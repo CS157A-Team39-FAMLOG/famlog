@@ -1,0 +1,51 @@
+.navbar-logo {
+  width: 200px;
+  margin-left: 50px;
+}
+
+.btn-primary {
+  background-color: #00a0d6;
+  border-color: #00a0d6;
+}
+
+.btn-primary:hover {
+  color: white !important;
+  background-color: #0082ad !important;
+  border-color: #0082ad !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+  outline: none !important;
+  color: white !important;
+  background-color: #006688 !important;
+  border-color: #006688 !important;
+}
+
+.signup-btn {
+  margin-left: 10px;
+}
+
+.btn-success {
+  background-color: #c0257a;
+  border-color: #c0257a;
+}
+
+.btn-success:hover {
+  color: white;
+  background-color: #921d5e;
+  border-color: #921d5e;
+}
+
+.btn-success:active {
+  color: white !important;
+  background-color: #691644 !important;
+  border-color: #691644 !important;
+}
+
+.signup-link,
+.signup-link:hover,
+.signup-link:active {
+  color: white !important;
+  text-decoration: none !important;
+}
