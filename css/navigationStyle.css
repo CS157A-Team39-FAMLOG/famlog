@@ -1,3 +1,11 @@
+.main {
+  background-color: #006688;
+}
+
+.navbar-right-pos {
+  margin-right: 10px;
+}
+
 .navbar-logo {
   width: 200px;
   margin-left: 50px;
@@ -43,17 +51,24 @@
   border-color: #691644 !important;
 }
 
-.signup-link,
-.signup-link:hover,
-.signup-link:active {
+.button-link,
+.button-link:hover,
+.button-link:active {
   color: white !important;
   text-decoration: none !important;
 }
 
-.main {
-  background-color: #006688;
+.btn-light {
+  background-color: #25c08c;
+  border-color: #25c08c;
 }
 
-.navbar-form-pos {
-  margin-right: 10px;
+.btn-light:hover {
+  background-color: #21a579;
+  border-color: #21a579;
+}
+
+.btn-light:active {
+  background-color: #197959 !important;
+  border-color: #197959 !important;
 }

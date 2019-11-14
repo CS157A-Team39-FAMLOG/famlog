@@ -38,9 +38,9 @@
         if (isset($_SESSION['accountName'])) {
             echo '
                   <div class="form-inline">
-                    <button class="btn btn-success signup-btn" type="button" name="signup"><a class="signup-link" href="signup.php">Signup</a></button>                    
-                    <button class="btn btn-success signup-btn" type="button" name="signup"><a class="signup-link" href="signup.php">Signup</a></button>
-                    <form class="form-group my-2 my-lg-0 navbar-form-pos" action="functional/logout_functional.php" method="post">
+                    <button class="btn btn-light signup-btn" type="button" name="button"><a class="button-link" href="accountHome.php">Account List</a></button>                    
+                    <button class="btn btn-light signup-btn navbar-right-pos" type="button" name="signup"><a class="button-link" href="personalHome.php">Personal List</a></button>
+                    <form class="form-group my-2 my-lg-0 navbar-right-pos" action="functional/logout_functional.php" method="post">
                         <button  class="btn btn-secondary" type="submit" name="logout">Logout</button>
                     </form>
                   </div>
@@ -50,7 +50,7 @@
                     <input class="form-control mr-sm-2" type="text" name="loginAcctName" placeholder="Account Name">
                     <input class="form-control mr-sm-2" type="password" name="loginPwd" placeholder="Password">
                     <button class="btn btn-primary" type="submit" name="login">Login</button> 
-                    <button class="btn btn-success signup-btn" type="button" name="signup"><a class="signup-link" href="signup.php">Signup</a></button> 
+                    <button class="btn btn-success signup-btn navbar-right-pos" type="button" name="signup"><a class="button-link" href="signup.php">Signup</a></button> 
                   </form>
                   
                   ';
