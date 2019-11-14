@@ -10,9 +10,8 @@
             echo '<p>You are logged in.</p>';
            
           } else {
-            checkLoginErrors();
-            
             echo '<div class="line-1 anim-typewriter">Welcome to FAMLOG</div>';
+            checkLoginErrors();
           }
         ?>
     </div>
@@ -22,11 +21,11 @@
   function checkLoginErrors() {
     if (isset($_GET['error'])) {
       if ($_GET['error'] == "emptyfield") {
-        echo '<p class="signup-error">Please fill in the blanks.</p>';
+        echo '<div class="login-error">Please fill in the blanks.</div>';
       } else if ($_GET['error'] == "wrongPassword" || $_GET['error'] == "wrongPassw") {
-        echo '<p class="signup-error">This is a wrong password.</p>';
+        echo '<div class="login-error">This is a wrong password.</div>';
       } else if ($_GET['error'] == "userDoesNotExist") {
-        echo '<p class="signup-error">This user does not exist. Please sign up!</p>';
+        echo '<div class="login-error">This user does not exist. Please sign up!</div>';
       }
     }
   }
