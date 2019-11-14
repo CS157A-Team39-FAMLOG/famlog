@@ -1,0 +1,12 @@
+USE cs157a_project;
+
+CREATE TABLE `account` (
+  `accountID` int(6) NOT NULL AUTO_INCREMENT,
+  `accName` varchar(30) NOT NULL,
+  `passWrd` varchar(5000) NOT NULL,
+  PRIMARY KEY (`accName`),
+  UNIQUE KEY `accountID` (`accountID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+

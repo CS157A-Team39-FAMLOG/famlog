@@ -28,33 +28,45 @@
 </head>
 <body>
      <!------------- Navbar Setup ---------------------->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
         
         <a class="navbar-brand" href="index.php">
             <img class="navbar-logo" src="images/famlog_logo.png" alt="logo">
         </a> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <?php
         
         if (isset($_SESSION['accountName'])) {
             echo '
-                  <div class="form-inline">
-                    <button class="btn btn-light signup-btn" type="button" name="button"><a class="button-link" href="accountHome.php">Account List</a></button>                    
-                    <button class="btn btn-light signup-btn navbar-right-pos" type="button" name="signup"><a class="button-link" href="personalHome.php">Personal List</a></button>
-                    <form class="form-group my-2 my-lg-0 navbar-right-pos" action="functional/logout_functional.php" method="post">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="accountHome.php">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="personalHome.php">Personal List</a>
+                        </li>
+                    </ul>
+                    <form class="form-group my-2 my-lg-0" action="functional/logout_functional.php" method="post">
                         <button  class="btn btn-secondary" type="submit" name="logout">Logout</button>
                     </form>
-                  </div>
+                </div>
                   ';
           } else {
-            echo '<form class="form-inline my-2 my-lg-0" action="functional/login_functional.php" method="post">
-                    <input class="form-control mr-sm-2" type="text" name="loginAcctName" placeholder="Account Name">
-                    <input class="form-control mr-sm-2" type="password" name="loginPwd" placeholder="Password">
-                    <button class="btn btn-primary" type="submit" name="login">Login</button> 
-                    <button class="btn btn-success signup-btn navbar-right-pos" type="button" name="signup"><a class="button-link" href="signup.php">Signup</a></button> 
-                  </form>
-                  
-                  ';
+            echo '
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <form class="form-inline my-2 my-lg-0 justify-content-end" action="functional/login_functional.php" method="post">
+                        <input class="form-control mr-sm-2" type="text" name="loginAcctName" placeholder="Account Name">
+                        <input class="form-control mr-sm-2" type="password" name="loginPwd" placeholder="Password">
+                        <button class="btn btn-primary" type="submit" name="login">Login</button> 
+                        <button class="btn btn-success signup-btn navbar-right-pos" type="button" name="signup"><a class="button-link" href="signup.php">Signup</a></button> 
+                    </form>
+                </div>
+              ';
           }
 
         ?>

@@ -51,11 +51,10 @@
   border-color: #691644 !important;
 }
 
-.button-link,
-.button-link:hover,
-.button-link:active {
-  color: white !important;
-  text-decoration: none !important;
+.nav-link,
+.nav-link:hover,
+.nav-link:active {
+  font-size: 1.4em
 }
 
 .btn-light {
