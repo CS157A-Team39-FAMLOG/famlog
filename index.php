@@ -8,9 +8,11 @@
         <?php
           if (isset($_SESSION['accountName'])) {
             echo '<p>You are logged in.</p>';
+           
           } else {
             checkLoginErrors();
-            echo '<p>You are logged out.</p>';
+            
+            echo '<div class="line-1 anim-typewriter">Welcome to FAMLOG</div>';
           }
         ?>
     </div>

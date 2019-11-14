@@ -72,3 +72,41 @@
   background-color: #197959 !important;
   border-color: #197959 !important;
 }
+
+/********************************************************/
+/*Typewriter Animation*/
+.line-1 {
+  color: #691644;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  width: 24em;
+  margin: 300 auto;
+  border-right: 2px solid #691644;
+  font-size: 380%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+.anim-typewriter {
+  animation: typewriter 2s steps(15) 1s 1 normal both,
+    blinkTextCursor 500ms steps(15) infinite normal;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 10.5em;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #691644;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
