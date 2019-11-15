@@ -1,5 +1,6 @@
 USE cs157a_project;
 
+1.
 CREATE TABLE `account` (
   `accountID` int(6) NOT NULL AUTO_INCREMENT,
   `accName` varchar(30) NOT NULL,
@@ -8,5 +9,72 @@ CREATE TABLE `account` (
   UNIQUE KEY `accountID` (`accountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+2.
+CREATE TABLE `user` (
+  `userID` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+3.
+CREATE TABLE `has` (
+  `accName` varchar(30) NOT NULL,
+  `userID` int(6) NOT NULL,
+  PRIMARY KEY (`accName`,`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+4.
+CREATE TABLE `item` (
+  `itemID` int(6) NOT NULL AUTO_INCREMENT,
+  `itemName` varchar(30) NOT NULL,
+  `brand` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`itemID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+5.
+CREATE TABLE `owns` (
+  `userID` int(6) NOT NULL,
+  `personalListID` int(6) NOT NULL,
+  PRIMARY KEY (`userID`,`personalListID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+6.
+CREATE TABLE `personallist` (
+  `personalListID` int(6) NOT NULL AUTO_INCREMENT,
+  `quantity` int(6) NOT NULL,
+  `priority` int(1) NOT NULL,
+  `notes` tinytext,
+  PRIMARY KEY (`personalListID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+7.
+CREATE TABLE `purchasehistory` (
+  `purchaseID` int(6) NOT NULL,
+  `belongsTo` varchar(30) NOT NULL,
+  `buyer` varchar(30) NOT NULL,
+  `quantity` int(6) NOT NULL,
+  `date` date NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  PRIMARY KEY (`purchaseID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+8.
+CREATE TABLE `records` (
+  `itemID` int(6) NOT NULL,
+  `purchaseID` int(6) NOT NULL,
+  PRIMARY KEY (`itemID`,`purchaseID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+9.
+CREATE TABLE `shows` (
+  `accName` varchar(30) NOT NULL,
+  `purchaseID` int(6) NOT NULL,
+  PRIMARY KEY (`accName`,`purchaseID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+10.
+CREATE TABLE `contains` (
+  `personalListID` int(6) NOT NULL,
+  `itemID` int(6) NOT NULL,
+  PRIMARY KEY (`personalListID`,`itemID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
