@@ -12,7 +12,7 @@ CREATE TABLE `account` (
 2.
 CREATE TABLE `user` (
   `userID` int(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(30) NOT NULL UNIQUE,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -26,7 +26,7 @@ CREATE TABLE `has` (
 4.
 CREATE TABLE `item` (
   `itemID` int(6) NOT NULL AUTO_INCREMENT,
-  `itemName` varchar(30) NOT NULL,
+  `itemName` varchar(30) NOT NULL UNIQUE,
   `brand` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`itemID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,7 +39,7 @@ CREATE TABLE `owns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 6.
-CREATE TABLE `personallist` (
+CREATE TABLE `personal_list` (
   `personalListID` int(6) NOT NULL AUTO_INCREMENT,
   `quantity` int(6) NOT NULL,
   `priority` int(1) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `personallist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 7.
-CREATE TABLE `purchasehistory` (
+CREATE TABLE `purchase_history` (
   `purchaseID` int(6) NOT NULL,
   `belongsTo` varchar(30) NOT NULL,
   `buyer` varchar(30) NOT NULL,
