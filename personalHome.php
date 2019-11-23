@@ -25,33 +25,38 @@
 
 <!-- Display all profiles of this account-->
 <div class="container">
-	<h2>Welcome, <?php echo $_SESSION['accountName'] ?>!</h2>
+	<h2>Welcome, <?php echo $accName ?>!</h2>
 	<h4>Pick a user or add new profile!</h4>
 
-    <div class="card-deck">
-    	<!-- <div class="card text-center bg-light mb-3">
-	      <div class="card-body">
-	        <h5 class="card-title">Name</h5>
-	        <a href="#" class="btn btn-primary">Choose</a>
-	      </div>
-	    </div> -->
-		<?php
+	<!-- <div class="card text-center bg-light mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Name</h5>
+        <a href="#" class="btn btn-primary">Choose</a>
+      </div>
+    </div> -->
+	<?php
+	$count = 0;
 
-		$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-		// output data of each row
+	$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+	// output data of each row
 		while($row = $result->fetch_assoc()) {
-		echo "<div class='card text-center bg-light mb-3'><div class='card-body'>
-	        <h5 class='card-title'>" . $row["name"]. "</h5>
-	        <a href='#' class='btn btn-primary'>Choose</a>
-	      </div></div>";
+			if (($count%4)==0) {
+				echo "<div class='card-deck'>";
+			}
+			echo "<div class='card text-center bg-light mb-3'><div class='card-body'>
+		        <h5 class='card-title'>" . $row["name"]. "</h5>
+		        <a href='#' class='btn btn-primary'>Choose</a>
+		      </div></div>";
+		    if (($count%4)==3) {
+		    	echo "</div>";
+		    }
+		    $count++;
 		}
-		echo "</div>";
-		} else { echo "0 results"; }
-		$conn->close();
-		?>
-    </div>
+	} else { echo "0 results"; }
+	$conn->close();
+	?>
 </div>
 
 
