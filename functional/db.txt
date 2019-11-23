@@ -12,7 +12,7 @@ CREATE TABLE `account` (
 2.
 CREATE TABLE `user` (
   `userID` int(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL UNIQUE,
+  `name` varchar(30) NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

@@ -1,5 +1,7 @@
 <?php 
+session_start();
 require 'db_config.php';
+
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) die($conn->connect_error);
@@ -8,45 +10,41 @@ if (!$conn) {
     die("Connection failed: ".mysqli_connect_error());
 }
 
-if (isset($_POST['addUser'])) {
+if (isset($_POST['submit'])) {
     
-    $user = $_POST['user'];
-    
+    $user = mysqli_escape_string($conn, $_POST['userName']);
 
-    if empty($acctName) {
-        exit();
-    } else if (!preg_match("/^[a-zA-Z0-9]*$/", $acctName)) {
-        exit();
-    } else {
-        checkAndInsert($conn, $acctName, $password);
-    }
-    $stmt->close();
+    $accName = $_SESSION['accountName'];
+    insertIntoDb($conn, $accName, $user);
     $conn->close();
 } else {
-    header("Location: ../signup.php");
+    header("Location: ../personalHome.php");
     exit();
 }
 
-function checkAndInsert($conn, $userName, $password) {
-    $stmt = $conn->prepare("SELECT name FROM user WHERE name=?");
-    $stmt->bind_param("s", $userName);
-    $stmt->execute();
-    $stmt->store_result();
-    $result_check = $stmt->num_rows();
-    
-    if ($result_check > 0) {
-        header("Location: ../signup.php?error=accountAlreadyExists");
-        exit();
-    } else {
-        insertIntoDb($conn, $acctName, $password);
-    }
-}
 
-function insertIntoDb($conn, $accName, $userName, $password) {
-    $stmt = $conn->prepare("INSERT INTO user(userName) VALUES (?)");
-    $stmt->bind_param("s", $userName);
-    $stmt->execute();
-    header("Location: ../signup.php?signup=success");
-    exit();
+function insertIntoDb($conn, $accName, $name) {
+    $stmt1 = $conn->prepare("INSERT INTO user (name) VALUES (?)");
+    $stmt1->bind_param("s", $_POST['userName']);
+    $stmt1->execute();
+    $stmt1->close();
+
+    $query = "SELECT accName FROM account WHERE accName='$accName'";
+    $result = mysqli_query($conn, $query);
+    if ( ! $result ) die(mysqli_error());
+    $accName1 = mysqli_fetch_assoc($result);
+
+
+    $query = "SELECT userID FROM user WHERE userID>=ALL(SELECT userID FROM user)";
+    $result = mysqli_query($conn, $query);
+    if ( ! $result ) die(mysqli_error());
+    $row = mysqli_fetch_assoc($result);
+
+
+    $stmt3 = $conn->prepare("INSERT INTO has VALUES (?, ?)");
+    $stmt3->bind_param("si", $accName1, $row);
+    $stmt3->execute();
+    // $stmt2->close();
+    $stmt3->close();
 }
 

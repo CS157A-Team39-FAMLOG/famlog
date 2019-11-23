@@ -1,8 +1,15 @@
 <?php 
 	if (session_status()) {
         require 'navigation.php';
-        echo 'Welcome, '.$_SESSION['accountName']."!<br>";
-        echo 'This is the personal shopping list home.';
+		require 'functional/db_config.php';
+		$conn = new mysqli($servername, $username, $password, $database);
+		if ($conn->connect_error) die($conn->connect_error);
+
+		if (!$conn) {
+		    die("Connection failed: ".mysqli_connect_error());
+		}
+    	$accName = $_SESSION['accountName'];
+
     } else {
         header("Location: ../index.php");
     }
@@ -20,30 +27,32 @@
 <div class="container">
 	<h2>Welcome, <?php echo $_SESSION['accountName'] ?>!</h2>
 	<h4>Pick a user or add new profile!</h4>
+
     <div class="card-deck">
-    	<div class="card text-center bg-light mb-3">
+    	<!-- <div class="card text-center bg-light mb-3">
 	      <div class="card-body">
-	        <h5 class="card-title">Person1</h5>
+	        <h5 class="card-title">Name</h5>
 	        <a href="#" class="btn btn-primary">Choose</a>
 	      </div>
-	    </div>
-	    <div class="card text-center bg-light mb-3">
-	      <div class="card-body">
-	        <h5 class="card-title">Person2</h5>
-	        <a href="#" class="btn btn-primary">Choose</a>
-	      </div>
-	    </div>
-	    <div class="card text-center bg-light mb-3">
-	      <div class="card-body">
-	        <h5 class="card-title">Person3</h5>
-	        <a href="#" class="btn btn-primary">Choose</a>
-	      </div>
-	    </div>
+	    </div> -->
+		<?php
+
+		$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+		echo "<div class='card text-center bg-light mb-3'><div class='card-body'>
+	        <h5 class='card-title'>" . $row["name"]. "</h5>
+	        <a href='#' class='btn btn-primary'>Choose</a>
+	      </div></div>";
+		}
+		echo "</div>";
+		} else { echo "0 results"; }
+		$conn->close();
+		?>
     </div>
 </div>
-
-
-
 
 
 
@@ -57,11 +66,8 @@
     <label for="userName"><b>Name</b></label>
     <input type="text" placeholder="Enter Name" name="userName" required>
 
-    <label for="pin"><b>PIN</b></label>
-    <input type="password" pattern="[0-9]{4}" placeholder="Enter PIN" name="pin" maxlength="4" required>
-
-    <button type="submit" class="btn" name="submit">Add</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <button type="submit" class="btn btn-primary" name="submit">Add</button>
+    <button type="button" class="btn btn-danger" onclick="closeForm()">Close</button>
   </form>
 </div>
 
