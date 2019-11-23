@@ -10,8 +10,6 @@
 		}
     	$accName = $_SESSION['accountName'];
 
-		// echo >>>;
-		
     } else {
         header("Location: ../index.php");
     }
