@@ -40,15 +40,18 @@
 	$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
-	// output data of each row
+	// output data of each row	
 		while($row = $result->fetch_assoc()) {
+		
 			if (($count%4)==0) {
 				echo "<div class='card-deck'>";
 			}
-			echo "<div class='card text-center bg-light mb-3'><div class='card-body'>
-		        <h5 class='card-title'>" . $row["name"]. "</h5>
-		        <a href='#' class='btn btn-primary'>Choose</a>
-		      </div></div>";
+			echo "<div class='card text-center bg-light mb-3'>
+					<div class='card-body'>
+		        		<h5 class='card-title'>" . $row["name"]. "</h5>
+		        		<a href='#' class='btn btn-primary'>Choose</a>
+					  </div>
+				  </div>";
 		    if (($count%4)==3) {
 		    	echo "</div>";
 		    }
@@ -62,7 +65,7 @@
 
 
 
-<button class="open-button" onclick="openForm()">Create New Profile</button>
+<button class="btn btn-info open-button" onclick="openForm()"><i class="fa fa-user-plus"></i></button>
 
 <div class="form-popup" id="myForm">
   <form action="functional/add_user.php" class="form-container" method="post">
