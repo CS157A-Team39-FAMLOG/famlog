@@ -28,6 +28,7 @@ CREATE TABLE `item` (
   `itemID` int(6) NOT NULL AUTO_INCREMENT,
   `itemName` varchar(30) NOT NULL UNIQUE,
   `brand` varchar(30) DEFAULT NULL,
+  `quantity` int(6) NOT NULL,
   PRIMARY KEY (`itemID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -41,7 +42,6 @@ CREATE TABLE `owns` (
 6.
 CREATE TABLE `personal_list` (
   `personalListID` int(6) NOT NULL AUTO_INCREMENT,
-  `quantity` int(6) NOT NULL,
   `priority` int(1) NOT NULL,
   `notes` tinytext,
   PRIMARY KEY (`personalListID`)
