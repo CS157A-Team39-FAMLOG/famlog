@@ -24,9 +24,7 @@ DROP TABLE IF EXISTS `personallist`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personallist` (
   `personalListID` int(6) NOT NULL AUTO_INCREMENT,
-  `quantity` int(6) NOT NULL,
-  `priority` int(1) NOT NULL,
-  `notes` tinytext,
+  `store` tinytext,
   PRIMARY KEY (`personalListID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +35,7 @@ CREATE TABLE `personallist` (
 
 LOCK TABLES `personallist` WRITE;
 /*!40000 ALTER TABLE `personallist` DISABLE KEYS */;
-INSERT INTO `personallist` VALUES (1,5,5,'Ben has 5 super urgent items.'),(2,5,4,'I hvae 5 urgent items.'),(3,5,3,'I hvae 5 normal items.'),(4,5,2,'I have 5 less urgent items.'),(5,5,1,'I have 5 not urgent items.'),(6,5,3,'I have 5 normal items.'),(7,5,4,'I have 5 urgent items.'),(8,5,2,'I have 5 less urgent items.'),(9,5,1,'I have 5 not urgent items.'),(10,2,1,'I have 2 not urgent items.'),(11,6,5,'I have 6 very urgent items.'),(12,6,4,'I have 6 urgent items.'),(13,6,2,'I have 6 less urgent items.'),(14,5,1,'I have 5 not urgent items.'),(15,1,1,'I have a not urgent item.');
+INSERT INTO `personallist` VALUES (1,NULL),(2,NULL),(3,NULL),(4,NULL),(5,NULL),(6,NULL),(7,NULL),(8,NULL),(9,NULL),(10,NULL),(11,NULL),(12,NULL),(13,NULL),(14,NULL),(15,NULL);
 /*!40000 ALTER TABLE `personallist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-27 20:56:13
+-- Dump completed on 2019-11-28 18:46:33

@@ -26,6 +26,8 @@ CREATE TABLE `item` (
   `itemID` int(6) NOT NULL AUTO_INCREMENT,
   `itemName` varchar(30) NOT NULL,
   `brand` varchar(30) DEFAULT NULL,
+  `quantity` int(6) DEFAULT NULL,
+  `priority` int(1) DEFAULT NULL,
   PRIMARY KEY (`itemID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +38,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'apple','Safeway'),(2,'banana','Dole'),(3,'soda','Fanta'),(4,'soda','Coca-cola'),(5,'soda','Sprite'),(6,'Toki','Suntory'),(7,'ice cream','Walls'),(8,'ice cream','HaagenDazs'),(9,'Toki','Suntory'),(10,'Toki','Suntory'),(11,'Coffee','Starbucks'),(12,'Coffee','Peets'),(13,'Coffee','Blue Bottle'),(14,'Green Tea','Lipton'),(15,'Earl Grey Tea','TWG');
+INSERT INTO `item` VALUES (1,'apple','Safeway',NULL,NULL),(2,'banana','Dole',NULL,NULL),(3,'soda','Fanta',NULL,NULL),(4,'soda','Coca-cola',NULL,NULL),(5,'soda','Sprite',NULL,NULL),(6,'Toki','Suntory',NULL,NULL),(7,'ice cream','Walls',NULL,NULL),(8,'ice cream','HaagenDazs',NULL,NULL),(9,'Toki','Suntory',NULL,NULL),(10,'Toki','Suntory',NULL,NULL),(11,'Coffee','Starbucks',NULL,NULL),(12,'Coffee','Peets',NULL,NULL),(13,'Coffee','Blue Bottle',NULL,NULL),(14,'Green Tea','Lipton',NULL,NULL),(15,'Earl Grey Tea','TWG',NULL,NULL);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-27 20:56:13
+-- Dump completed on 2019-11-28 18:46:33

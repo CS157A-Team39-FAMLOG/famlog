@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `cs157a_project` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cs157a_project`;
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: cs157a_project
+-- Host: localhost    Database: famlog
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	8.0.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,12 +23,11 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
-  `accountID` int(6) NOT NULL AUTO_INCREMENT,
+  `accountID` int(6) NOT NULL,
   `accName` varchar(30) NOT NULL,
-  `passWrd` varchar(5000) NOT NULL,
-  PRIMARY KEY (`accName`),
-  UNIQUE KEY `accountID` (`accountID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `password` varchar(30) NOT NULL,
+  PRIMARY KEY (`accName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +36,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'jeff1','$2y$10$EDYEM4AHsbpzm3bjxZq/lOFcOlO69unQDRWzbDtxITjUhwo57RahO'),(2,'jeff2','$2y$10$jNXqIeO2.uML9fQVwJjK2.zFXaeWleEq9m.euLGuS9hj8SuFIud.2'),(3,'jeff3','$2y$10$.WBuFiI2hqv2jEmvw9zZw.U30TAyDZhN.sBEA5L6IOg/.DqppU5Aq');
+INSERT INTO `account` VALUES (1,'test1','test1pwd'),(10,'test10','test10pwd'),(11,'test11','test11pwd'),(12,'test12','test12pwd'),(13,'test13','test13pwd'),(14,'test14','test14pwd'),(15,'test15','test15pwd'),(2,'test2','test2pwd'),(3,'test3','test3pwd'),(4,'test4','test4pwd'),(5,'test5','test5pwd'),(6,'test6','test6pwd'),(7,'test7','test7pwd'),(8,'test8','test8pwd'),(9,'test9','test9pwd');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-12 21:04:10
+-- Dump completed on 2019-11-28 18:46:32
