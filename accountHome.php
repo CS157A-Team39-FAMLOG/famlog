@@ -53,9 +53,6 @@
             }
             ?>
             
-            <?php 
-                $pickedRow;
-            ?>
         </tbody>
         </table>
         </form>

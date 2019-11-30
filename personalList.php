@@ -1,13 +1,14 @@
 <?php 
-require 'navigation.php';
-require 'functional/db_config.php';
+	require 'navigation.php';
+	require 'functional/db_config.php';
 
-$conn = new mysqli($servername, $username, $password, $database);
-if ($conn->connect_error) die($conn->connect_error);
+	$conn = new mysqli($servername, $username, $password, $database);
+	if ($conn->connect_error) die($conn->connect_error);
 
-if (!$conn) {
-	die("Connection failed: ".mysqli_connect_error());
-}
+	if (!$conn) {
+		die("Connection failed: ".mysqli_connect_error());
+	}
+	$accName = $_SESSION['accountName'];
 
 ?>
 <!DOCTYPE html>
@@ -60,10 +61,12 @@ if (!$conn) {
 			</div>
 		</div>
 		<h3>Your Current List</h3>
-		<table style="width:100%" class="table table-striped text-center table-hover table-responsive-sm">
+
+		<table style="width:100%" class="table text-center table-hover table-responsive-sm">
 			<thead class="thead-dark">
 				<tr>
 					<th>Items</th>
+					<th>Brand</th>
 					<th>Quantity</th>
 					<th>Priority</th>
 					<th>Notes</th>
@@ -71,13 +74,52 @@ if (!$conn) {
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<?php 
+				if (isset($_POST['submit'])) {
+	    
+				    $user = $_POST['name'];
+
+				    $accName = $_SESSION['accountName'];
+
+				    $query = "SELECT userID FROM account JOIN has USING(accountID) JOIN user USING(userID) WHERE accName='$accName' AND name='$user'";
+				    $result = mysqli_query($conn, $query);
+				    if ( ! $result ) die(mysqli_error());
+				    $userID = mysqli_fetch_assoc($result);
+				    $user_id = $userID['userID'];
+
+				    $sql = "SELECT * FROM account JOIN has USING(accountID) JOIN user USING(userID) JOIN owns USING (userID) JOIN contains USING(personalListID) JOIN item USING (itemID) WHERE accName='$accName' AND userID='$user_id' ORDER BY priority DESC";
+
+	    			$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+					// output data of each row	
+						while($row = $result->fetch_assoc()) {
+						
+							$name = $row['itemName'];
+							$brand = $row['brand'];
+							$quantity = $row['quantity'];
+							$priority = $row['priority'];
+							$notes = $row['notes'];
+							
+							echo "<tr>
+									<td>$name</td>
+									<td>$brand</td>
+									<td>$quantity</td>
+									<td>$priority</td>
+									<td>$notes</td>
+									<td><button class='btn'><i class='fa fa-trash'></i></button></td></tr>";
+
+						}
+					} else { echo "Your list is currently empty"; }
+					$conn->close();
+				}
+				?>
+
+				<!-- <tr>
 					<td>Jill</td>
 					<td>Smith</td>
 					<td>50</td>
 					<td>50</td>
 					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-					
 				</tr>
 				<tr>
 					<td>Eve</td>
@@ -99,7 +141,7 @@ if (!$conn) {
 					<td>94</td>
 					<td>94</td>
 					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table> 
 	</div>
