@@ -36,7 +36,7 @@
 	<?php
 	$count = 0;
 
-	$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
+	$sql = "SELECT name FROM account JOIN has USING (accountID) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	// output data of each row	
@@ -66,7 +66,7 @@
 			echo "<div class='card-body'>
 		        <h5 class='card-title'>$name</h5><form action='personalList.php'>
 		      	<input type='hidden' name='name' value=$name>
-		      	<input class='btn btn-primary' type='submit' name='submit' value='Choose'>
+		      	<input class='btn btn-dark' type='submit' name='submit' value='Choose'>
 		      </form>
 		      </div></div>";
 
