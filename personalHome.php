@@ -65,7 +65,7 @@
 			}
 			echo "<div class='card-body'>
 		        <h5 class='card-title'>$name</h5><form action='personalList.php' method='post'>
-		      	<input type='hidden' name='name' value=$name>
+				  <input type='hidden' name='name' value=$name>
 		      	<input class='btn btn-dark' type='submit' name='submit' value='Choose'>
 		      </form>
 		      </div></div>";

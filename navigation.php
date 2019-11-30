@@ -49,7 +49,7 @@
                             <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="personalHome.php">Personal List</a>
+                            <a class="nav-link" href="personalHome.php">Personal Lists</a>
                         </li>
                     </ul>
                     <form class="form-group my-2 my-lg-0" action="functional/logout_functional.php" method="post">

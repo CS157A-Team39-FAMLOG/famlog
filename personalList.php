@@ -1,15 +1,18 @@
 <?php 
-	require 'navigation.php';
-	require 'functional/db_config.php';
+	if (session_status()) {
+        require 'navigation.php';
+		require 'functional/db_config.php';
+		$conn = new mysqli($servername, $username, $password, $database);
+		if ($conn->connect_error) die($conn->connect_error);
 
-	$conn = new mysqli($servername, $username, $password, $database);
-	if ($conn->connect_error) die($conn->connect_error);
+		if (!$conn) {
+		    die("Connection failed: ".mysqli_connect_error());
+		}
+    	$accName = $_SESSION['accountName'];
 
-	if (!$conn) {
-		die("Connection failed: ".mysqli_connect_error());
-	}
-	$accName = $_SESSION['accountName'];
-
+    } else {
+        header("Location: ../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +24,7 @@
 		<div class="row">
 			<div class="col-6">
 				<form>
-					<h3>Add to wishlist</h3>
+					<h3>Add to Your List</h3>
 					<div class="form-inline mb-2">
 						<div class="form-group">
 							<label for="itemName">Item Name</label>
@@ -57,12 +60,13 @@
 						<input type="text" class="form-control ml-2" name="notes" id="notes">
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
+					<a href="personalHome.php" class="btn btn-link">Go Back</a>
 				</form>
 			</div>
 		</div>
 		<h3>Your Current List</h3>
 
-		<table style="width:100%" class="table text-center table-hover table-responsive-sm">
+		<table style="width:100%" class="table text-center table-responsive-sm">
 			<thead class="thead-dark">
 				<tr>
 					<th>Items</th>
@@ -76,8 +80,8 @@
 			<tbody>
 				<?php 
 				if (isset($_POST['submit'])) {
-	    
-				    $user = $_POST['name'];
+					
+					$user = $_POST['name'];
 
 				    $accName = $_SESSION['accountName'];
 
@@ -107,43 +111,15 @@
 									<td>$priority</td>
 									<td>$notes</td>
 									<td><button class='btn'><i class='fa fa-trash'></i></button></td></tr>";
-
 						}
+
 					} else { echo "Your list is currently empty"; }
+					
 					$conn->close();
 				}
 				?>
-
-				<!-- <tr>
-					<td>Jill</td>
-					<td>Smith</td>
-					<td>50</td>
-					<td>50</td>
-					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-				</tr>
-				<tr>
-					<td>Eve</td>
-					<td>Jackson</td>
-					<td>94</td>
-					<td>94</td>
-					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-				</tr>
-				<tr>
-					<td>Eve</td>
-					<td>Jackson</td>
-					<td>94</td>
-					<td>94</td>
-					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-				</tr>
-				<tr>
-					<td>Eve</td>
-					<td>Jackson</td>
-					<td>94</td>
-					<td>94</td>
-					<td><button class="btn"><i class="fa fa-trash"></i></button></td>
-				</tr> -->
 			</tbody>
-		</table> 
+		</table>
 	</div>
 </body>
 </html>

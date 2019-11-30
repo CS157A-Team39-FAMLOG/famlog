@@ -16,21 +16,21 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/personalStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/accountHomeStyle.css">
 </head>
 <body>
     
     <div class="container">
-        <form method="POST" action="functional/purchase_functional.php">
-        <table class="table">
+        <form method="post" action="purchase.php">
+        <table class="table text-center">
         <thead class="thead-dark">
             <tr>
-            <th><a>Priority</a></th>
-            <th><a>Item Name</a></th>
-            <th><a >Brand</a></th>
-            <th><a>Quantity</a></th>
-            <th><a>Notes</a></th>
-            <th><a>Price</a></th>
+            <th>Priority</th>
+            <th>Item Name</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+            <th>Notes</th>
+            <th>Selection</th>
             </tr>
         </thead>
         <tbody>
@@ -46,29 +46,27 @@
                 <td><?php echo $row['brand']; ?></td>
                 <td><?php echo $row['quantity']; ?></td>
                 <td><?php echo $row['notes']; ?></td>
-                <?php echo '<td><input type="text" name="'. $row['itemID']. '" class="form-control"?></td'; 
-                ?>
+                    <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemName']. '" class="checkbox-style"?></td>';?>
             </tr>
             <?php
             }
             ?>
-            
+            <?php echo '<input type="hidden" name="seshVar" value="'.$_SESSION['accountName'].'">';?>
+           
         </tbody>
         </table>
+            <button type="submit" name="submit" class="btn btn-primary float-right">
+                Choose
+            </button>
+  
         </form>
     </div>
-
-    
    
     
     </div>
   
     <script>
-    $(function () {
-        $('#myTab li:first-child a').tab('show')
-    })
 
-    
     </script>            
 
 </body>
