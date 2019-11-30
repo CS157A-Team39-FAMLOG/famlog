@@ -39,8 +39,9 @@
 	$sql = "SELECT name FROM account JOIN has USING (accName) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
-	// output data of each row
+	// output data of each row	
 		while($row = $result->fetch_assoc()) {
+		
 			if (($count%4)==0) {
 				echo "<div class='card-deck'>";
 			}
@@ -68,6 +69,7 @@
 		      	<input class='btn btn-primary' type='submit' name='submit' value='Choose'>
 		      </form>
 		      </div></div>";
+
 		    if (($count%4)==3) {
 		    	echo "</div>";
 		    }
@@ -77,8 +79,7 @@
 	$conn->close();
 	?>
 </div>
-<!-- Popup form for creating new profile -->
-<button class="open-button" onclick="openForm()">Create New Profile</button>
+<button class="btn btn-info open-button" onclick="openForm()"><i class="fa fa-user-plus"></i></button>
 
 <div class="form-popup" id="myForm">
   <form action="functional/add_user.php" class="form-container" method="post">
