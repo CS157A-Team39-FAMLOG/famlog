@@ -96,16 +96,3 @@
 
 </body>
 </html>
-
-/**
-NOTES:
-
-    1. Base yourself off of https://www.sourcecodester.com/php/11847/simple-ordering-app-using-phpmysqli.html
-       for purchase transaction on AccountHOme page...this will execute action on purchase_functional.php
-    
-            a) if isset then add to purchase history on form action
-    2. For personallist, every user can have multiple personal lists. 
-       HOWEVER, their max will be 6 or whatever the number of unique types (ie Groceries, Electronics).
-       Each user can have only one list of each type.
-
- */
