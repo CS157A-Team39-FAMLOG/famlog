@@ -68,7 +68,7 @@ CREATE TABLE `records` (
 CREATE TABLE `shows` (
   `accountID` varchar(30) NOT NULL,
   `purchaseID` int(6) NOT NULL,
-  PRIMARY KEY (`accName`,`purchaseID`)
+  PRIMARY KEY (`accountID`,`purchaseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 10.
