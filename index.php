@@ -8,7 +8,7 @@
         <?php
           if (isset($_SESSION['accountName'])) {
             echo '<p>You are logged in.</p>';
-           
+            include "accountHome.php";
           } else {
             echo '<div class="line-1 anim-typewriter">Welcome to FAMLOG</div>';
             checkLoginErrors();
