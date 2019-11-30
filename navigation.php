@@ -46,7 +46,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="accountHome.php">Home<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="personalHome.php">Personal List</a>

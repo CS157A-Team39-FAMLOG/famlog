@@ -30,10 +30,10 @@ function insertIntoDb($conn, $accName, $name) {
     $stmt1->execute();
     $stmt1->close();
 
-    $query = "SELECT accName FROM account WHERE accName='$accName'";
+    $query = "SELECT accountID FROM account WHERE accName='$accName'";
     $result = mysqli_query($conn, $query);
     if ( ! $result ) die(mysqli_error());
-    $acc_name = mysqli_fetch_assoc($result);
+    $acc_id = mysqli_fetch_assoc($result);
 
     $query = "SELECT userID FROM user WHERE userID>=ALL(SELECT userID FROM user)";
     $result = mysqli_query($conn, $query);
@@ -41,7 +41,7 @@ function insertIntoDb($conn, $accName, $name) {
     $user_id = mysqli_fetch_assoc($result);
 
     $stmt2 = $conn->prepare("INSERT INTO has VALUES (?, ?)");
-    $stmt2->bind_param("si", $acc_name['accName'], $user_id['userID']);
+    $stmt2->bind_param("si", $acc_id['accountID'], $user_id['userID']);
     $stmt2->execute();
     $stmt2->close();
 }
