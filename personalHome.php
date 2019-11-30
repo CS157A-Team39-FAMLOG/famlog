@@ -38,7 +38,7 @@
 
 	$sql = "SELECT name FROM account JOIN has USING (accountID) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
 	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
+	if (!empty($result) && $result->num_rows > 0) {
 	// output data of each row	
 		while($row = $result->fetch_assoc()) {
 		
