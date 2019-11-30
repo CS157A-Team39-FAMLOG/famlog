@@ -12,6 +12,10 @@
   width: 280px;
 }
 
+.card {
+  opacity: 0.95
+}
+
 /* The popup form - hidden by default */
 .form-popup {
   display: none;

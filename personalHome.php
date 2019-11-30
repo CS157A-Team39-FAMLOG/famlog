@@ -22,7 +22,6 @@
 </head>
 <body>
 
-
 <!-- Display all profiles of this account-->
 <div class="container">
 	<h2>Welcome, <?php echo $accName ?>!</h2>
@@ -45,9 +44,29 @@
 			if (($count%4)==0) {
 				echo "<div class='card-deck'>";
 			}
-			echo "<div class='card text-center bg-light mb-3'><div class='card-body'>
-		        <h5 class='card-title'>" . $row["name"]. "</h5>
-		        <a href='#' class='btn btn-primary'>Choose</a>
+			$name = $row['name'];
+			switch ($count%5) {
+				case 0:
+					echo "<div class='card text-center bg-info mb-3'>";
+					break;
+				case 1:
+					echo "<div class='card text-center bg-warning mb-3'>";
+					break;
+				case 2:
+					echo "<div class='card text-center bg-success mb-3'>";
+					break;
+				case 3:
+					echo "<div class='card text-center bg-light mb-3'>";
+					break;
+				case 4:
+					echo "<div class='card text-center bg-danger mb-3'>";
+					break;
+			}
+			echo "<div class='card-body'>
+		        <h5 class='card-title'>$name</h5><form action='personalList.php'>
+		      	<input type='hidden' name='name' value=$name>
+		      	<input class='btn btn-primary' type='submit' name='submit' value='Choose'>
+		      </form>
 		      </div></div>";
 		    if (($count%4)==3) {
 		    	echo "</div>";
@@ -58,10 +77,7 @@
 	$conn->close();
 	?>
 </div>
-
-
-
-
+<!-- Popup form for creating new profile -->
 <button class="open-button" onclick="openForm()">Create New Profile</button>
 
 <div class="form-popup" id="myForm">
