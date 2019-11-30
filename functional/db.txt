@@ -2,16 +2,14 @@ USE cs157a_project;
 
 1.
 CREATE TABLE `account` (
-  `accountID` int(6) NOT NULL AUTO_INCREMENT,
-  `accName` varchar(30) NOT NULL,
-  `passWrd` varchar(5000) NOT NULL,
-  PRIMARY KEY (`accName`),
-  UNIQUE KEY `accountID` (`accountID`)
+  `accountID` INT NOT NULL AUTO_INCREMENT PRIMARY,
+  `accName` varchar(30) NOT NULL UNIQUE,
+  `passWrd` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 2.
 CREATE TABLE `user` (
-  `userID` int(6) NOT NULL AUTO_INCREMENT,
+  `userID` INT NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -19,32 +17,32 @@ CREATE TABLE `user` (
 3.
 CREATE TABLE `has` (
   `accName` varchar(30) NOT NULL,
-  `userID` int(6) NOT NULL,
+  `userID` INT NOT NULL,
   PRIMARY KEY (`accName`,`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 4.
 CREATE TABLE `item` (
-  `itemID` int(6) NOT NULL AUTO_INCREMENT,
+  `itemID` INT NOT NULL AUTO_INCREMENT,
   `itemName` varchar(30) NOT NULL UNIQUE,
   `brand` varchar(30) DEFAULT NULL,
+  `priority` TINTYINT NOT NULL,
   `quantity` int(6) NOT NULL,
-  `priority` int(1) NOT NULL,
   `notes` tinytext,
   PRIMARY KEY (`itemID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 5.
 CREATE TABLE `owns` (
-  `userID` int(6) NOT NULL,
-  `personalListID` int(6) NOT NULL,
+  `userID` INT NOT NULL,
+  `personalListID` INT NOT NULL,
   PRIMARY KEY (`userID`,`personalListID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 6.
 CREATE TABLE `personal_list` (
-  `personalListID` int(6) NOT NULL AUTO_INCREMENT,
-  `typeOfList` varchar(500) NOT NULL,
+  personalListID INT NOT NULL AUTO_INCREMENT,
+  last_updated timestamp default current_timestamp on update current_timestamp,
   PRIMARY KEY (`personalListID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
