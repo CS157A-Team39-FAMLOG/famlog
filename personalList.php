@@ -23,12 +23,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-				<form>
+				<form action="functional/add_item.php" method="post">
 					<h3>Add to Your List</h3>
 					<div class="form-inline mb-2">
 						<div class="form-group">
 							<label for="itemName">Item Name</label>
-							<input type="text" class="form-control ml-2" id="itemName" name="itemName" pattern="a-zA-Z" required>
+							<input type="text" class="form-control ml-2" id="itemName" name="itemName" required>
 						</div>
 
 					</div>
@@ -59,7 +59,7 @@
 						<label for="notes">Notes</label>
 						<input type="text" class="form-control ml-2" name="notes" id="notes">
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 					<a href="personalHome.php" class="btn btn-link">Go Back</a>
 				</form>
 			</div>
@@ -82,6 +82,7 @@
 				if (isset($_POST['submit'])) {
 					
 					$user = $_POST['name'];
+					$_SESSION['profile'] = $user;
 
 				    $accName = $_SESSION['accountName'];
 
@@ -112,7 +113,6 @@
 									<td>$notes</td>
 									<td><button class='btn'><i class='fa fa-trash'></i></button></td></tr>";
 						}
-
 					} else { echo "Your list is currently empty"; }
 					
 					$conn->close();

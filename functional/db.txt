@@ -42,6 +42,7 @@ CREATE TABLE `owns` (
 6.
 CREATE TABLE `personal_list` (
   personalListID INT NOT NULL AUTO_INCREMENT,
+  items_count INT,
   last_updated timestamp default current_timestamp on update current_timestamp,
   PRIMARY KEY (`personalListID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
