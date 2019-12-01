@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $accName = $_SESSION['accountName'];
     insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $priority, $notes);
     $conn->close();
-    header("Location: ../personalList.php");
+    header("Location: ../personalList.php?");
 } else {
     header("Location: ../personalHome.php");
     exit();
