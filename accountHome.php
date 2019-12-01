@@ -36,7 +36,16 @@
         <tbody>
         
             <?php
-            $sql = "SELECT * FROM item ORDER BY priority DESC";  
+
+            $accountName = $_SESSION['accountName'];
+            $sql = "SELECT * FROM item
+            JOIN contains USING(itemID)
+            JOIN personal_list USING(personalListID)
+            JOIN owns USING (personalListID)
+            JOIN user USING(userID)
+            JOIN has USING (userID)
+            JOIN account USING (accountID)
+            WHERE accName='$accountName' ORDER BY priority DESC";  
             $result = $conn->query($sql);   
                 while($row = $result->fetch_assoc()){
             ?>
