@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
 }
 
 
-function insertIntoDb($conn, $accName, $user, $item, $brand, $quantity, $priority, $notes) {
+function insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $priority, $notes) {
     $query = "SELECT userID FROM account JOIN has USING(accountID) JOIN user USING(userID) WHERE accName='$accName' AND name='$user'";
     $result = mysqli_query($conn, $query);
     if ( ! $result ) die(mysqli_error());
@@ -70,7 +70,7 @@ function insertIntoDb($conn, $accName, $user, $item, $brand, $quantity, $priorit
 
     // // update item_count in personalList
     // $query = "UPDATE personalList SET items_count='$count' WHERE personalListID='$personal_id'";
-    $stmt2 = $conn->prepare("UPDATE personalList SET items_count=(?) WHERE personalListID='$personal_id'");
+    $stmt2 = $conn->prepare("UPDATE personal_list SET items_count=(?) WHERE personalListID='$personal_id'");
     $stmt2->bind_param("i", $count);
     $stmt2->execute();
     $stmt2->close();

@@ -35,16 +35,22 @@
     <form method="post" action="functional/purchase_functional.php">
         <table class="table text-center">
 
-        
-        <div class="input-group mb-3 col-width">
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>User</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div>
-
+            <div class="form-group">
+                <label for="formControlSelect1">Who Are You?</label>
+            
+                <select class="form-control col-width" id="exampleFormControlSelect1">
+                    <?php
+                        $sql2 = "SELECT * FROM user";  
+                        $result2 = $conn->query($sql2); 
+                            while($row2 = $result2->fetch_assoc()){
+                        ?>
+                    <option><?php echo $row2['name']; ?></option>
+                  <?php
+            }
+            ?>
+                </select>
+            </div>
+         
         <thead class="thead-dark">
             <tr>
             <th>Item Name</th>
@@ -86,9 +92,10 @@
             </button>
             
         </form>
-   <a href="index.php" class="btn btn-link float-right d-inline" role="button">Go Back</a>
+    <a href="index.php" class="btn btn-link float-right d-inline" role="button">Go Back</a>
     
     </div>
+
     
     <script>
     </script>            

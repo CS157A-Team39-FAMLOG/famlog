@@ -29,7 +29,7 @@
 </head>
 <body>
      <!------------- Navbar Setup ---------------------->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between main">
         
         <a class="navbar-brand" href="index.php">
             <img class="navbar-logo" src="images/famlog_logo.png" alt="logo">
