@@ -1,5 +1,5 @@
 .main {
-  background-color: #006688;
+  margin-bottom: 30px;
 }
 
 .navbar-right-pos {
@@ -55,11 +55,11 @@
 .button-link:hover,
 .button-link:active {
   color: white !important;
-  text-decoration: none !important;  
+  text-decoration: none !important;
 }
 
 .nav-link {
-  font-size: 1.4em
+  font-size: 1.4em;
 }
 
 .btn-light {
