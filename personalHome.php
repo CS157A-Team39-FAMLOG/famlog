@@ -36,7 +36,7 @@
 	<?php
 	$count = 0;
 
-	$sql = "SELECT name FROM user JOIN has USING (userID) JOIN account USING (accountID) WHERE accName='$accName' ORDER BY name";
+	$sql = "SELECT name FROM account JOIN has USING (accountID) JOIN user USING (userID) WHERE accName='$accName' ORDER BY name";
 	$result = $conn->query($sql);
 	if (!empty($result) && $result->num_rows > 0) {
 	// output data of each row	

@@ -84,7 +84,7 @@
 					$user = $_POST['name'];
 					$_SESSION['profile'] = $user;
 
-				    $accName = $_SESSION['accountName'];
+					$accName = $_SESSION['accountName'];
 
 				    $query = "SELECT userID FROM account JOIN has USING(accountID) JOIN user USING(userID) WHERE accName='$accName' AND name='$user'";
 				    $result = mysqli_query($conn, $query);

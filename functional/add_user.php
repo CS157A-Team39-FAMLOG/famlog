@@ -41,8 +41,40 @@ function insertIntoDb($conn, $accName, $name) {
     $user_id = mysqli_fetch_assoc($result);
 
     $stmt2 = $conn->prepare("INSERT INTO has VALUES (?, ?)");
-    $stmt2->bind_param("si", $acc_id['accountID'], $user_id['userID']);
+    $stmt2->bind_param("si", $acc_id['accountID'], $unique_user);
+    $unique_user = $user_id['userID'];
     $stmt2->execute();
     $stmt2->close();
+    
+    checkToInsertList($conn, $unique_user);
 }
+    
+function checkToInsertList($conn, $user_id){
+    $query = "SELECT COUNT(*) AS count FROM owns WHERE userID='$user_id'";
+    $result = mysqli_query($conn, $query);
+    if ( ! $result ) die(mysqli_error());
+    $row = mysqli_fetch_assoc($result);
+    $personalConfirm = $row['count'];
 
+    $query2 = "SELECT COUNT(*) AS count FROM owns";
+    $result2 = mysqli_query($conn, $query2);
+    if ( ! $result2 ) die(mysqli_error());
+    $row2 = mysqli_fetch_assoc($result2);
+    $num_of_lists = $row2['count'];
+
+    
+    if ($personalConfirm == 0) {
+        $stmt1 = $conn->prepare("INSERT INTO personal_list (personalListID, items_count) VALUES (?,?)");
+        $stmt1->bind_param("ii", $personal_list_ID, $initial_count);
+        $stmt1->execute();
+        $stmt1->close();
+
+        $personal_list_ID = $num_of_lists+1;
+        $initial_count = 0;
+
+        $stmt2 = $conn->prepare("INSERT INTO owns (userID, personalListID) VALUES (?,?)");
+        $stmt2->bind_param("ii", $user_id, $personal_list_ID);
+        $stmt2->execute();
+        $stmt2->close();
+    }
+}
