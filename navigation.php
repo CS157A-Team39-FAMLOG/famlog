@@ -51,6 +51,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="personalHome.php">Personal Lists</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px"></i></a>
+                        </li>
                     </ul>
                     <form class="form-group my-2 my-lg-0" action="functional/logout_functional.php" method="post">
                         <button  class="btn btn-secondary" type="submit" name="logout">Logout</button>
