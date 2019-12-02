@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
     $accName = $_SESSION['accountName'];
     insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $priority, $notes);
     $conn->close();
-    header("Location: ../personalList.php?");
+    $hiddenUser = base64_encode(json_encode($user));
+    header("Location: ../personalList.php?user=$hiddenUser");
 } else {
     header("Location: ../personalHome.php");
     exit();
