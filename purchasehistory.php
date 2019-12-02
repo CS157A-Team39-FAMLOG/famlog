@@ -40,8 +40,8 @@
             <?php
 
             $sql = "SELECT itemName, belongsTo, buyer, purchase_history.quantity, datePurchased, price
-                    FROM purchase_history, account, item, records
-                    WHERE item.itemID = records.itemID AND accName='$accName' AND records.purchaseID = purchase_history.purchaseID";  
+            FROM purchase_history, account, item, records, shows
+            WHERE item.itemID = records.itemID AND records.purchaseID = purchase_history.purchaseID AND purchase_history.purchaseID = shows.purchaseID AND shows.accountID = account.accountID AND accName='$accName' ";  
              $result = $conn->query($sql);   
              if($result) {
                 while($row = $result->fetch_assoc()){
