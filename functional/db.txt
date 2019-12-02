@@ -49,7 +49,7 @@ CREATE TABLE `personal_list` (
 
 7.
 CREATE TABLE `purchase_history` (
-  `purchaseID` int(6) NOT NULL,
+  `purchaseID` int(6) NOT NULL AUTO_INCREMENT,
   `belongsTo` varchar(30) NOT NULL,
   `buyer` varchar(30) NOT NULL,
   `quantity` int(6) NOT NULL,
