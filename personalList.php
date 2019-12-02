@@ -18,6 +18,10 @@
 <html>
 <head>
 	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container">
@@ -79,9 +83,14 @@
 			</thead>
 			<tbody>
 				<?php 
-				if (isset($_POST['submit'])) {
+				if (isset($_POST['submit']) || isset($_GET['user'])) {
 					
-					$user = $_POST['name'];
+					if (isset($_GET['user'])){
+						$user = json_decode( base64_decode($_GET['user'] ));
+					} else {
+						$user = $_POST['name'];
+					}
+				
 					$_SESSION['profile'] = $user;
 
 					$accName = $_SESSION['accountName'];
@@ -121,5 +130,7 @@
 			</tbody>
 		</table>
 	</div>
+	<script>
+	</script>
 </body>
 </html>
