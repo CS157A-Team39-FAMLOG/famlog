@@ -45,7 +45,7 @@
                     JOIN user USING(userID)
                     JOIN has USING (userID)
                     JOIN account USING (accountID)
-                    WHERE accName='household1' 
+                    WHERE accName='$accountName' 
                     AND itemID NOT IN 
                     (SELECT itemID FROM records)
                     ORDER BY priority DESC";  

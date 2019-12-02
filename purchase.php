@@ -41,7 +41,10 @@
             
                 <select class="form-control col-width" name="buyer">
                     <?php
-                        $sql2 = "SELECT * FROM user";  
+                        $sql2 = "SELECT * FROM user, has, account
+                                WHERE user.userID = has.userID
+                                AND has.accountID = account.accountID
+                                AND accName='$accName'";  
                         $result2 = $conn->query($sql2); 
                             while($row2 = $result2->fetch_assoc()){
                                 echo "<option value=".$row2['name'].">".$row2['name']."</option>"; 
