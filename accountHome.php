@@ -39,25 +39,30 @@
 
             $accountName = $_SESSION['accountName'];
             $sql = "SELECT * FROM item
-            JOIN contains USING(itemID)
-            JOIN personal_list USING(personalListID)
-            JOIN owns USING (personalListID)
-            JOIN user USING(userID)
-            JOIN has USING (userID)
-            JOIN account USING (accountID)
-            WHERE accName='$accountName' ORDER BY priority DESC";  
-            $result = $conn->query($sql);   
+                    JOIN contains USING(itemID)
+                    JOIN personal_list USING(personalListID)
+                    JOIN owns USING (personalListID)
+                    JOIN user USING(userID)
+                    JOIN has USING (userID)
+                    JOIN account USING (accountID)
+                    WHERE accName='household1' 
+                    AND itemID NOT IN 
+                    (SELECT itemID FROM records)
+                    ORDER BY priority DESC";  
+            $result = $conn->query($sql);
+            if($result) {
                 while($row = $result->fetch_assoc()){
             ?>
-            <tr>
-                <td><?php echo $row['priority']; ?></td>
-                <td><?php echo $row['itemName']; ?></td>
-                <td><?php echo $row['brand']; ?></td>
-                <td><?php echo $row['quantity']; ?></td>
-                <td><?php echo $row['notes']; ?></td>
-                    <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemName']. '" class="checkbox-style"?></td>';?>
-            </tr>
+                <tr>
+                    <td><?php echo $row['priority']; ?></td>
+                    <td><?php echo $row['itemName']; ?></td>
+                    <td><?php echo $row['brand']; ?></td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    <td><?php echo $row['notes']; ?></td>
+                        <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemName']. '" class="checkbox-style"?></td>';?>
+                </tr>
             <?php
+                }   
             }
             ?>
             <?php echo '<input type="hidden" name="seshVar" value="'.$_SESSION['accountName'].'">';?>

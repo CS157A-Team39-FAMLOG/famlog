@@ -46,10 +46,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.php">Home&nbsp &nbsp|<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="personalHome.php">Personal Lists</a>
+                            <a class="nav-link" href="personalHome.php">Personal Lists &nbsp|</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="purchaseHistory.php">Purchase History</a>
                         </li>
                     </ul>
                     <form class="form-group my-2 my-lg-0" action="functional/logout_functional.php" method="post">

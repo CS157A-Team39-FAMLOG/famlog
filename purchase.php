@@ -8,6 +8,7 @@
 		if (!$conn) {
 		    die("Connection failed: ".mysqli_connect_error());
         }
+        $accName = $_SESSION['accountName'];
     } else {
         header("Location: ../index.php");
     }
@@ -21,7 +22,7 @@
             }
         }
     }
-     ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,16 +39,14 @@
             <div class="form-group">
                 <label for="formControlSelect1">Who Are You?</label>
             
-                <select class="form-control col-width" id="exampleFormControlSelect1">
+                <select class="form-control col-width" name="buyer">
                     <?php
                         $sql2 = "SELECT * FROM user";  
                         $result2 = $conn->query($sql2); 
                             while($row2 = $result2->fetch_assoc()){
-                        ?>
-                    <option><?php echo $row2['name']; ?></option>
-                  <?php
-            }
-            ?>
+                                echo "<option value=".$row2['name'].">".$row2['name']."</option>"; 
+                        }
+                    ?>
                 </select>
             </div>
          
@@ -77,7 +76,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <input type="hidden" name="item_id[]" value="<?php echo $row['itemID'] ?>">
+                        <input type="number" class="form-control" name="prices[]">
                     </div>
                 </td>
             </tr>
@@ -96,7 +96,6 @@
     
     </div>
 
-    
     <script>
     </script>            
 
