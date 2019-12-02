@@ -51,7 +51,7 @@ CREATE TABLE `personal_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `purchase_history` (
-  `purchaseID` int(6) NOT NULL,
+  `purchaseID` int(6) NOT NULL AUTO_INCREMENT,
   `belongsTo` varchar(30) NOT NULL,
   `buyer` varchar(30) NOT NULL,
   `quantity` int(6) NOT NULL,
