@@ -7,7 +7,6 @@
       <div class="container">
         <?php
           if (isset($_SESSION['accountName'])) {
-            echo '<p>You are logged in.</p>';
             include "accountHome.php";
           } else {
             echo '<div class="line-1 anim-typewriter">Welcome to FAMLOG</div>';
@@ -25,7 +24,7 @@
       } else if ($_GET['error'] == "wrongPassword" || $_GET['error'] == "wrongPassw") {
         echo '<div class="login-error">This is a wrong password.</div>';
       } else if ($_GET['error'] == "userDoesNotExist") {
-        echo '<div class="login-error">This user does not exist. Please sign up!</div>';
+        echo '<div class="login-error">This account does not exist. Please sign up!</div>';
       }
     }
   }

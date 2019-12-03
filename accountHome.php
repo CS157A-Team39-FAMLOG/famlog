@@ -7,6 +7,7 @@
 		if (!$conn) {
 		    die("Connection failed: ".mysqli_connect_error());
         }
+        $accountName = $_SESSION['accountName'];
         
     } else {
         header("Location: ../index.php");
@@ -21,6 +22,8 @@
 <body>
     
     <div class="container">
+        <div><h1>Main Shopping List</h1></div>
+        <div><h5>Select the Items You Bought</h5></div>
         <form method="post" action="purchase.php">
         <table class="table text-center">
         <thead class="thead-dark">
@@ -30,24 +33,23 @@
             <th>Brand</th>
             <th>Quantity</th>
             <th>Notes</th>
-            <th>Selection</th>
+            <th>Item Bought</th>
             </tr>
         </thead>
         <tbody>
         
             <?php
-
-            $accountName = $_SESSION['accountName'];
-            $sql = "SELECT * FROM item
-                    JOIN contains USING(itemID)
-                    JOIN personal_list USING(personalListID)
-                    JOIN owns USING (personalListID)
-                    JOIN user USING(userID)
-                    JOIN has USING (userID)
-                    JOIN account USING (accountID)
-                    WHERE accName='$accountName' 
-                    AND itemID NOT IN 
-                    (SELECT itemID FROM records)
+            $sql = "SELECT *
+                    FROM item
+                    NATURAL JOIN contains
+                    NATURAL JOIN personal_list
+                    NATURAL JOIN owns
+                    NATURAL JOIN user
+                    NATURAL JOIN has
+                    NATURAL JOIN account
+                    WHERE accName = '$accountName'
+                    AND itemID NOT IN
+                    (SELECT item.itemID FROM item, purchase_history, records WHERE item.itemID = records.itemID AND records.purchaseID = purchase_history.purchaseID)
                     ORDER BY priority DESC";  
             $result = $conn->query($sql);
             if($result) {
@@ -59,7 +61,7 @@
                     <td><?php echo $row['brand']; ?></td>
                     <td><?php echo $row['quantity']; ?></td>
                     <td><?php echo $row['notes']; ?></td>
-                        <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemName']. '" class="checkbox-style"?></td>';?>
+                        <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemID']. '" class="checkbox-style"?></td>';?>
                 </tr>
             <?php
                 }   

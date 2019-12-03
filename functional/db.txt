@@ -24,7 +24,7 @@ CREATE TABLE `has` (
 4.
 CREATE TABLE `item` (
   `itemID` INT NOT NULL AUTO_INCREMENT,
-  `itemName` varchar(30) NOT NULL UNIQUE,
+  `itemName` varchar(30) NOT NULL,
   `brand` varchar(30) DEFAULT NULL,
   `priority` TINYINT NOT NULL,
   `quantity` int(6) NOT NULL,
