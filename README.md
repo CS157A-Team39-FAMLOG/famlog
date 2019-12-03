@@ -29,7 +29,7 @@ CREATE TABLE `has` (
 
 CREATE TABLE `item` (
   `itemID` INT NOT NULL AUTO_INCREMENT,
-  `itemName` varchar(30) NOT NULL UNIQUE,
+  `itemName` varchar(30) NOT NULL,
   `brand` varchar(30) DEFAULT NULL,
   `priority` TINYINT NOT NULL,
   `quantity` int(6) NOT NULL,
@@ -71,7 +71,6 @@ CREATE TABLE `shows` (
   `purchaseID` int(6) NOT NULL,
   PRIMARY KEY (`accountID`,`purchaseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 CREATE TABLE `contains` (
   `personalListID` int(6) NOT NULL,
