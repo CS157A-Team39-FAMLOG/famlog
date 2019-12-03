@@ -57,7 +57,7 @@
             ?>
                 <tr>
                     <td><?php for ($i=0; $i < $row['priority']; $i++) { 
-                        echo "<span class='fa fa-star checked'></span>";
+                        echo "<span class='fa fa-exclamation checked'></span>";
                     } ?></td>
                     <td><?php echo $row['itemName']; ?></td>
                     <td><?php echo $row['brand']; ?></td>
