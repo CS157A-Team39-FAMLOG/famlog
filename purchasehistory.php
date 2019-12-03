@@ -24,6 +24,8 @@
 <body>
     
     <div class="container">
+        <div><h1>Purchase History</h1></div>
+
         <table class="table text-center">
         <thead class="thead-dark">
             <tr>
@@ -61,7 +63,7 @@
            
         </tbody>
         </table>
-        <a href="index.php" class="btn btn-link float-right d-inline" role="button">Go Back</a>
+        <a href="index.php" class="btn btn-link float-right d-inline link-style" role="button">Go Back</a>
     </div>
    
     

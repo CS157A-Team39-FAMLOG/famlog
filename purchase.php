@@ -37,7 +37,8 @@
         <table class="table text-center">
 
             <div class="form-group">
-                <label for="formControlSelect1">Who Are You?</label>
+                <label class="label-style" for="formControlSelect1">Who Bought These Items?</label>
+                <div><p>Please select your name from the list and fill in the prices you paid</p></div>
             
                 <select class="form-control col-width" name="buyer">
                     <?php
@@ -66,21 +67,21 @@
         
             <?php
             $entries = join("','",$checkedItems);   
-            $sql = "SELECT * FROM item WHERE itemName IN ('$entries')";
+            $sql = "SELECT * FROM item WHERE itemID IN ('$entries')";
             $result = $conn->query($sql);   
                 while($row = $result->fetch_assoc()){
             ?>
             <tr>
-                <td><?php echo $row['itemName']; ?></td>
-                <td><?php echo $row['brand']; ?></td>
-                <td><?php echo $row['quantity']; ?></td>
-                <td><?php echo $row['notes']; ?></td>
+                <td class="align-middle"><?php echo $row['itemName']; ?></td>
+                <td class="align-middle"><?php echo $row['brand']; ?></td>
+                <td class="align-middle"><?php echo $row['quantity']; ?></td>
+                <td class="align-middle"><?php echo $row['notes']; ?></td>
                 <td class="col-width"><div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
                         <input type="hidden" name="item_id[]" value="<?php echo $row['itemID'] ?>">
-                        <input type="number" class="form-control" name="prices[]">
+                        <input type="number" step="0.01" min="0" placeholder="0.00" class="form-control" name="prices[]" required>
                     </div>
                 </td>
             </tr>
@@ -95,7 +96,7 @@
             </button>
             
         </form>
-    <a href="index.php" class="btn btn-link float-right d-inline" role="button">Go Back</a>
+    <a href="index.php" class="btn btn-link link-style float-right d-inline" role="button">Go Back</a>
     
     </div>
 

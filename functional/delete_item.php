@@ -13,14 +13,10 @@ if (!$conn) {
 if (isset($_POST['submit'])) {
 
     $user = $_SESSION['profile'];
-    $itemName = $_POST['itemName'];
-    $brand = $_POST['brand'];
-    $quantity = $_POST['quantity'];
-    $priority = $_POST['priority'];
-    $notes = $_POST['notes'];
-
+    $itemID = $_POST['itemID'];
     $accName = $_SESSION['accountName'];
-    insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $priority, $notes);
+
+    deleteFromDb($conn, $user, $itemID, $accName);
     $conn->close();
     $hiddenUser = base64_encode(json_encode($user));
     header("Location: ../personalList.php?mark=$hiddenUser");
@@ -30,7 +26,7 @@ if (isset($_POST['submit'])) {
 }
 
 
-function insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $priority, $notes) {
+function deleteFromDb($conn, $user, $itemID, $accName) {
     $query = "SELECT userID FROM account JOIN has USING(accountID) JOIN user USING(userID) WHERE accName='$accName' AND name='$user'";
     $result = mysqli_query($conn, $query);
     if ( ! $result ) die(mysqli_error());
@@ -43,24 +39,15 @@ function insertIntoDb($conn, $accName, $user, $itemName, $brand, $quantity, $pri
     $personalID = mysqli_fetch_assoc($result);
     $personal_id = $personalID['personalListID'];
 
-    // insert to table item
-    $stmt1 = $conn->prepare("INSERT INTO item (itemName, brand, quantity, priority, notes) VALUES (?,?,?,?,?)");
-    $stmt1->bind_param("ssiis", $itemName, $brand, $quantity, $priority, $notes);
+    $stmt1 = $conn->prepare("DELETE FROM item WHERE itemID=(?)");
+    $stmt1->bind_param("i", $itemID);
     $stmt1->execute();
     $stmt1->close();
 
-    // select itemID
-    $query = "SELECT itemID FROM item WHERE itemID>=ALL(SELECT itemID FROM item)";
-    $result = mysqli_query($conn, $query);
-    if ( ! $result ) die(mysqli_error());
-    $item = mysqli_fetch_assoc($result);
-    $item_id = $item['itemID'];
-
-    // insert to table contains
-    $stmt1 = $conn->prepare("INSERT INTO contains VALUES (?,?)");
-    $stmt1->bind_param("ii", $personal_id, $item_id);
-    $stmt1->execute();
-    $stmt1->close();
+    $stmt2 = $conn->prepare("DELETE FROM contains WHERE itemID=(?)");
+    $stmt2->bind_param("i", $itemID);
+    $stmt2->execute();
+    $stmt2->close();
 
     // count items of the specified personal_id
     $query = "SELECT COUNT(*) AS count FROM contains WHERE personalListID='$personal_id'";
