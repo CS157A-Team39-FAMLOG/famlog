@@ -69,3 +69,8 @@
 .open-button:hover {
   opacity: 1;
 }
+
+h5 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 24pt;
+}
