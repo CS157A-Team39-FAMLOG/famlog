@@ -150,9 +150,10 @@
 							echo "<tr>
 									<td>$name</td>
 									<td>$brand</td>
-									<td>$quantity</td>
-									<td>$priority</td>
-									<td>$notes</td>
+									<td>$quantity</td><td>";
+							for ($i=0; $i < $priority; $i++) 
+								{echo "<span class='fa fa-star checked'></span>";}
+							echo "</td><td>$notes</td>
 									<td>$checkMark</td>
 								  </tr>";
 						}

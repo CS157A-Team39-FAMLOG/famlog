@@ -56,7 +56,9 @@
                 while($row = $result->fetch_assoc()){
             ?>
                 <tr>
-                    <td><?php echo $row['priority']; ?></td>
+                    <td><?php for ($i=0; $i < $row['priority']; $i++) { 
+                        echo "<span class='fa fa-star checked'></span>";
+                    } ?></td>
                     <td><?php echo $row['itemName']; ?></td>
                     <td><?php echo $row['brand']; ?></td>
                     <td><?php echo $row['quantity']; ?></td>
