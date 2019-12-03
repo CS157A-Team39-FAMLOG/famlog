@@ -6,3 +6,7 @@
 .checkbox-style:hover {
   cursor: pointer;
 }
+
+.checked {
+	color: orange;
+}
