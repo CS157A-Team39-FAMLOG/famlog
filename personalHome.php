@@ -27,12 +27,6 @@
 	<h2>Welcome, <?php echo $accName ?>!</h2>
 	<h4>Pick a user or add new profile!</h4>
 
-	<!-- <div class="card text-center bg-light mb-3">
-      <div class="card-body">
-        <h5 class="card-title">Name</h5>
-        <a href="#" class="btn btn-primary">Choose</a>
-      </div>
-    </div> -->
 	<?php
 	$count = 0;
 
