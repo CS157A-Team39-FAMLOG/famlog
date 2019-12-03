@@ -55,7 +55,7 @@ CREATE TABLE `purchase_history` (
   `belongsTo` varchar(30) NOT NULL,
   `buyer` varchar(30) NOT NULL,
   `quantity` int(6) NOT NULL,
-  `date` date NOT NULL,
+  `datePurchased` date NOT NULL,
   `price` decimal(8,2) NOT NULL,
   PRIMARY KEY (`purchaseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -71,6 +71,7 @@ CREATE TABLE `shows` (
   `purchaseID` int(6) NOT NULL,
   PRIMARY KEY (`accountID`,`purchaseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 CREATE TABLE `contains` (
   `personalListID` int(6) NOT NULL,
