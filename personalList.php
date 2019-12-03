@@ -152,7 +152,7 @@
 									<td>$brand</td>
 									<td>$quantity</td><td>";
 							for ($i=0; $i < $priority; $i++) 
-								{echo "<span class='fa fa-star checked'></span>";}
+								{echo "<span class='fa fa-exclamation'></span>";}
 							echo "</td><td>$notes</td>
 									<td>$checkMark</td>
 								  </tr>";
