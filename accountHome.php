@@ -63,7 +63,7 @@
                     <td><?php echo $row['brand']; ?></td>
                     <td><?php echo $row['quantity']; ?></td>
                     <td><?php echo $row['notes']; ?></td>
-                        <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemID']. '" class="checkbox-style"?></td>';?>
+                        <?php echo '<td><input type="checkbox" name="check_list[]" value="'. $row['itemID']. '" class="checkbox-style"></td>';?>
                 </tr>
             <?php
                 }   

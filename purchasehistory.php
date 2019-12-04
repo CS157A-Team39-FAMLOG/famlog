@@ -34,7 +34,7 @@
             <th>Bought By</th>
             <th>Quantity</th>
             <th>Date Purchased</th>
-            <th>Price</th>
+            <th>Price (including tax)</th>
             </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@
                     <td><?php echo $row['buyer']; ?></td>
                     <td><?php echo $row['quantity']; ?></td>
                     <td><?php echo $row['datePurchased']; ?></td>
-                    <td><span>$</span><?php echo $row['price']; ?></td>
+                    <td><span>$</span><?php calculateFinalPrice($row['price']) ?></td>
                 </tr>
             <?php
                 }
@@ -75,3 +75,13 @@
 
 </body>
 </html>
+
+<?php 
+
+function calculateFinalPrice($price) {
+    $taxToAdd = $price * 0.0925;
+    $newPrice = $price + $taxToAdd;
+    echo round($newPrice,2);
+}
+
+?>
