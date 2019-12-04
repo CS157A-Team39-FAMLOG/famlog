@@ -120,6 +120,8 @@
 							JOIN item USING (itemID)
 							WHERE accName='$accName'
 							AND userID='$user_id'
+							AND itemID NOT IN
+                    		(SELECT item.itemID FROM item, purchase_history, records WHERE item.itemID = records.itemID AND records.purchaseID = purchase_history.purchaseID) 
 							ORDER BY priority DESC";
 
 	    			$result = $conn->query($sql);
