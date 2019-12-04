@@ -93,7 +93,6 @@
 					<th>Quantity</th>
 					<th>Priority</th>
 					<th>Notes</th>
-					<th>Bought</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -156,7 +155,6 @@
 							for ($i=0; $i < $priority; $i++) 
 								{echo "<span class='fa fa-exclamation'></span>";}
 							echo "</td><td>$notes</td>
-									<td>$checkMark</td>
 								  </tr>";
 						}
 					} else { echo "Your list is currently empty"; }
