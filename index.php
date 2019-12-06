@@ -2,7 +2,6 @@
   require "navigation.php";
 ?>
 
-
   <main>
       <div class="container">
         <?php
