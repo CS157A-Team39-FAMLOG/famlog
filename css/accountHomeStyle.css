@@ -1,3 +1,11 @@
+body {
+  background-image: url("/images/account.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
 .checkbox-style {
   width: 20px;
   height: 20px;
@@ -5,9 +13,4 @@
 
 .checkbox-style:hover {
   cursor: pointer;
-}
-
-.checked {
-  color: red;
-  font-size: 18pt;
 }
