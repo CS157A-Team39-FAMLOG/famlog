@@ -1,3 +1,11 @@
+body {
+  background-image: url("/images/account.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button,
 .btn-info {
@@ -15,7 +23,13 @@
 }
 
 .card {
-  opacity: 0.95
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.card-body h5 {
+  font-weight: bold;
+  color: black;
 }
 
 /* The popup form - hidden by default */
