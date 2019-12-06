@@ -25,8 +25,8 @@
         <div><h1>Main Shopping List</h1></div>
         <div><h5>Select the Items You Bought</h5></div>
         <form method="post" action="purchase.php">
-        <table class="table text-center table-hover">
-        <thead >
+        <table class="table text-center">
+        <thead class="table-dark">
             <tr>
             <th>Priority</th>
             <th>Item Name</th>

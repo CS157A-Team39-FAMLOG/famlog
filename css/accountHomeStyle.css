@@ -14,3 +14,16 @@ body {
 .checkbox-style:hover {
   cursor: pointer;
 }
+
+.master_table {
+	text-align: center;
+
+}
+
+.table {
+	background-color: rgba(255,255,255,0.5);
+}
+
+tbody tr:hover {
+	background-color: rgba(214,41,136,0.5);
+}
