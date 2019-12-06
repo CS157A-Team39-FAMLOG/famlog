@@ -25,7 +25,7 @@
     
     <div class="container">
         <div><h1>Purchase History</h1></div>
-
+        <br>
         <table class="table text-center">
         <thead class="thead-dark">
             <tr>

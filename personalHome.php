@@ -24,9 +24,9 @@
 
 <!-- Display all profiles of this account-->
 <div class="container">
-	<h2>Welcome, <?php echo $accName ?>!</h2>
-	<h4>Pick a user or add new profile!</h4>
-
+	<h1>Welcome, <?php echo $accName ?>!</h1>
+	<h3>Pick a user or add new profile!</h3>
+	<br>
 	<?php
 	$count = 0;
 
