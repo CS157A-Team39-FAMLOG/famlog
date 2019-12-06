@@ -32,6 +32,14 @@ body {
   color: black;
 }
 
+h5 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 24pt;
+}
+
+h1, h3 {
+  font-family: 'Patrick Hand', cursive;
+}
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
@@ -84,7 +92,3 @@ body {
   opacity: 1;
 }
 
-h5 {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 24pt;
-}

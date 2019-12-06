@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+h1, h3 {
+  font-family: 'Patrick Hand', cursive;
+}
+
 .checkbox-style {
   width: 20px;
   height: 20px;
@@ -13,11 +17,6 @@ body {
 
 .checkbox-style:hover {
   cursor: pointer;
-}
-
-.master_table {
-	text-align: center;
-
 }
 
 .table {
