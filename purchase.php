@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label class="label-style" for="formControlSelect1">Who Bought These Items?</label>
-                <div><p>Please select your name from the list and fill in the prices you paid</p></div>
+                <div><p>Please select your name from the list and fill in the prices of the items</p></div>
             
                 <select class="form-control col-width" name="buyer">
                     <?php

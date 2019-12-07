@@ -1,5 +1,9 @@
 body {
-  background-image: url("/images/account.jpg");
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("/images/account.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11,9 +15,5 @@ body {
 }
 
 .table {
-	background-color: rgba(255,255,255,0.5);
-}
-
-tbody tr:hover {
-	background-color: rgba(214,41,136,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }

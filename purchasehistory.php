@@ -81,7 +81,8 @@
 function calculateFinalPrice($price) {
     $taxToAdd = $price * 0.0925;
     $newPrice = $price + $taxToAdd;
-    echo round($newPrice,2);
+    $newPrice = round($newPrice,2);
+    echo number_format((float)$newPrice, 2, '.', '');
 }
 
 ?>
